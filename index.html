@@ -3,63 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SkyTech Dev — 3D Viewer Test</title>
-    
+    <title>SkyTech Dev — 3D Showcase</title>
+
     <!-- Подключаем библиотеку model-viewer от Google -->
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
-    
+
     <style>
+        /* Темная тема сайта */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 20px;
-            background-color: #f0f6ff; /* Наш фирменный светло-синий фон */
+            background-color: #0f172a; /* Глубокий темный фон */
+            color: #e2e8f0;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
         }
+
         .container {
             max-width: 800px;
             width: 100%;
-            background: #ffffff;
-            border: 1px solid #e1e8ed;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            background: #1e293b; /* Карточка чуть светлее фона */
+            border: 1px solid #334155;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
             overflow: hidden;
             text-align: center;
         }
+
         .header {
-            background-color: #0052cc;
-            padding: 20px;
-            color: #ffffff;
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            padding: 25px 20px;
+            border-bottom: 1px solid #334155;
         }
+
         .header h1 {
             margin: 0;
             font-size: 24px;
-            letter-spacing: 1px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #38bdf8; /* Неоново-синий акцент */
         }
+
         .viewer-container {
             width: 100%;
-            height: 500px; /* Большая высота, чтобы удобно рассмотреть поезд */
-            background: #eef2f5; /* Чуть сероватый фон для контраста с моделью */
+            height: 500px;
+            /* Радиальный градиент создает эффект мягкого "света прожектора" под моделькой */
+            background: radial-gradient(circle at 50% 90%, rgba(255,255,255,0.15) 0%, transparent 60%);
             position: relative;
         }
-        
+
         /* Стилизуем сам 3D-компонент */
         model-viewer {
             width: 100%;
             height: 100%;
-            outline: none; /* Убираем синюю рамку при клике в некоторых браузерах */
+            outline: none;
             --poster-color: transparent;
         }
 
         .footer {
-            padding: 15px;
-            color: #555555;
+            padding: 20px;
             font-size: 14px;
-            border-top: 1px solid #e1e8ed;
-            background-color: #fafbfc;
+            color: #94a3b8;
+            border-top: 1px solid #334155;
+            background-color: #1e293b;
+        }
+
+        .footer strong {
+            color: #cbd5e1;
         }
 
         /* Адаптивность для телефонов */
@@ -68,7 +82,10 @@
                 padding: 10px;
             }
             .viewer-container {
-                height: 350px; /* На телефонах делаем окошко поменьше */
+                height: 380px;
+            }
+            .header h1 {
+                font-size: 20px;
             }
         }
     </style>
@@ -77,26 +94,39 @@
 
 <div class="container">
     <div class="header">
-        <h1>Тест 3D-модели: ВЛ80</h1>
+        <h1>SkyRail Collection</h1>
     </div>
-    
+
     <div class="viewer-container">
         <!-- 
-          camera-controls: включает вращение и зум мышкой/пальцем
+          camera-controls: разрешает управление
           auto-rotate: модель плавно крутится сама
-          shadow-intensity: добавляет мягкую тень под моделью для реалистичности
+          rotation-per-second: скорость авто-вращения (медленнее и солиднее)
+          shadow-intensity="2": плотная тень внизу
+          shadow-softness="1": размытие тени (эффект мягкого света)
+          
+          Ограничение осей (orbit):
+          min/max-camera-orbit: формат "горизонталь вертикаль дистанция"
+          auto 75deg auto - мы разрешаем любую горизонталь (auto),
+          жестко фиксируем высоту на 75 градусах (чтобы смотреть чуть сверху, но нельзя было заглянуть под дно или строго сверху),
+          и разрешаем любой зум (auto).
         -->
-        <model-viewer 
-            src="models/vl80.glb" 
-            alt="3D модель электровоза ВЛ80 (SkyRail)" 
-            auto-rotate 
-            camera-controls 
-            shadow-intensity="1">
+        <model-viewer
+                src="models/vl80.glb"
+                alt="ВЛ80 3D Модель"
+                auto-rotate
+                rotation-per-second="15deg"
+                camera-controls
+                min-camera-orbit="auto 75deg auto"
+                max-camera-orbit="auto 75deg auto"
+                camera-orbit="0deg 75deg 100%"
+                shadow-intensity="2"
+                shadow-softness="1">
         </model-viewer>
     </div>
 
     <div class="footer">
-        🖱️ <strong>Управление:</strong> Зажмите левую кнопку мыши, чтобы крутить. Колесико — для масштабирования.
+        ↔️ <strong>Управление:</strong> Свайп или зажатие ЛКМ для вращения.
     </div>
 </div>
 
