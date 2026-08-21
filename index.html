@@ -3,132 +3,133 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SkyTech Dev — 3D Showcase</title>
+    <title>SkyTech Dev — Симуляторы нового поколения</title>
 
-    <!-- Подключаем библиотеку model-viewer от Google -->
+    <link rel="stylesheet" href="css/style.css">
+
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
-
-    <style>
-        /* Темная тема сайта */
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #0f172a; /* Глубокий темный фон */
-            color: #e2e8f0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
-
-        .container {
-            max-width: 800px;
-            width: 100%;
-            background: #1e293b; /* Карточка чуть светлее фона */
-            border: 1px solid #334155;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            overflow: hidden;
-            text-align: center;
-        }
-
-        .header {
-            background: linear-gradient(135deg, #0f172a, #1e293b);
-            padding: 25px 20px;
-            border-bottom: 1px solid #334155;
-        }
-
-        .header h1 {
-            margin: 0;
-            font-size: 24px;
-            font-weight: 600;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: #38bdf8; /* Неоново-синий акцент */
-        }
-
-        .viewer-container {
-            width: 100%;
-            height: 500px;
-            /* Радиальный градиент создает эффект мягкого "света прожектора" под моделькой */
-            background: radial-gradient(circle at 50% 90%, rgba(255,255,255,0.15) 0%, transparent 60%);
-            position: relative;
-        }
-
-        /* Стилизуем сам 3D-компонент */
-        model-viewer {
-            width: 100%;
-            height: 100%;
-            outline: none;
-            --poster-color: transparent;
-        }
-
-        .footer {
-            padding: 20px;
-            font-size: 14px;
-            color: #94a3b8;
-            border-top: 1px solid #334155;
-            background-color: #1e293b;
-        }
-
-        .footer strong {
-            color: #cbd5e1;
-        }
-
-        /* Адаптивность для телефонов */
-        @media (max-width: 600px) {
-            body {
-                padding: 10px;
-            }
-            .viewer-container {
-                height: 380px;
-            }
-            .header h1 {
-                font-size: 20px;
-            }
-        }
-    </style>
 </head>
 <body>
 
-<div class="container">
-    <div class="header">
-        <h1>SkyRail Collection</h1>
+<header class="hero">
+    <h1>SkyTechDev</h1>
+    <p>Искусство создавать симуляторы</p>
+
+    <!-- Главные кнопки -->
+    <div class="hero-buttons">
+        <a href="https://play.google.com/store/apps/details?id=com.skytech.rail_simulator" target="_blank" class="btn btn-primary">Скачать SkyRail - игра про поезда</a>
+        <a href="https://t.me/skytechdev" target="_blank" class="btn btn-secondary">Телеграм канал</a>
+    </div>
+</header>
+
+<main class="main-content">
+
+    <!-- БЛОК 1: ВВЕДЕНИЕ -->
+    <div class="intro-section text-block">
+        <h2>Добро пожаловать в мир SkyRail</h2>
+        <p>
+            SkyRail — это не просто игра про поезда. Это масштабная мультиплеерная песочница и симулятор железной дороги в вашем смартфоне. Мы перенесли атмосферу, романтику и сложность реальной железной дороги в мобильный формат, дав игрокам абсолютную свободу действий.
+        </p>
     </div>
 
-    <div class="viewer-container">
-        <!-- 
-          camera-controls: разрешает управление
-          auto-rotate: модель плавно крутится сама
-          rotation-per-second: скорость авто-вращения (медленнее и солиднее)
-          shadow-intensity="2": плотная тень внизу
-          shadow-softness="1": размытие тени (эффект мягкого света)
-          
-          Ограничение осей (orbit):
-          min/max-camera-orbit: формат "горизонталь вертикаль дистанция"
-          auto 75deg auto - мы разрешаем любую горизонталь (auto),
-          жестко фиксируем высоту на 75 градусах (чтобы смотреть чуть сверху, но нельзя было заглянуть под дно или строго сверху),
-          и разрешаем любой зум (auto).
-        -->
-        <model-viewer
-                src="models/vl80.glb"
-                alt="ВЛ80 3D Модель"
-                auto-rotate
-                rotation-per-second="15deg"
-                camera-controls
-                min-camera-orbit="auto 75deg auto"
-                max-camera-orbit="auto 75deg auto"
-                camera-orbit="0deg 75deg 100%"
-                shadow-intensity="2"
-                shadow-softness="1">
-        </model-viewer>
+    <!-- БЛОК 2: 3D МОДЕЛЬ (Демонстрация графики) -->
+    <div class="model-inline-wrapper">
+        <div class="viewer-container">
+            <model-viewer
+                    src="https://raw.githubusercontent.com/SkyWalkerOne/site/main/models/vl80.glb"
+                    alt="ВЛ80 3D Модель"
+                    auto-rotate
+                    rotation-per-second="15deg"
+                    camera-controls
+                    disable-zoom
+                    disable-pan
+                    min-camera-orbit="auto 75deg 100%"
+                    max-camera-orbit="auto 75deg 100%"
+                    camera-orbit="0deg 75deg 100%"
+                    shadow-intensity="2"
+                    shadow-softness="2">
+            </model-viewer>
+        </div>
+        <div class="viewer-footer">
+            ↔️ <strong>Управление:</strong> Свайп или зажатие ЛКМ для вращения.
+        </div>
     </div>
 
-    <div class="footer">
-        ↔️ <strong>Управление:</strong> Свайп или зажатие ЛКМ для вращения.
+    <!-- БЛОК 3: ОСОБЕННОСТИ ИГРЫ -->
+    <div class="features-section">
+        <h2>Особенности симулятора</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <h3>🌐 Живой мультиплеер</h3>
+                <p>Объединяйтесь с тысячами игроков. Создавайте свои сценарии, работайте машинистом или диспетчером и управляйте движением в реальном времени.</p>
+            </div>
+            <div class="feature-card">
+                <h3>👷 Свобода действий</h3>
+                <p>Полный RolePlay: выходите из кабины локомотива, переводите стрелки вручную, сцепляйте вагоны и исследуйте открытый мир пешком.</p>
+            </div>
+            <div class="feature-card">
+                <h3>🚂 Глубокий реализм</h3>
+                <p>Интерактивные кабины, реальные процедуры запуска локомотивов (пантографы, ГВ, тормоза) и проработанная физика многотонных составов.</p>
+            </div>
+        </div>
     </div>
-</div>
+
+    <!-- БЛОК 4: ДОСТИЖЕНИЯ И БЛАГОДАРНОСТЬ -->
+    <div class="achievements-section">
+        <h2>Нам 5 лет! Нас реально много:</h2>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">2 млн+</div>
+                <div class="stat-label">Скачиваний</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">150 тыс+</div>
+                <div class="stat-label">Активных игроков</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">20 тыс+</div>
+                <div class="stat-label">Отзывов</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">10 тыс+</div>
+                <div class="stat-label">В Telegram семье</div>
+            </div>
+        </div>
+
+        <div class="outro-text text-block">
+            <p>
+                Большое спасибо каждому из вас за то, что на протяжении 5-ти лет были с нами, направляли нас, советовали, помогали, находили баги и верили в нас. Отдельное спасибо действующим работникам железной дороги, которые консультировали нас во время разработки. Далеко не каждый игрок доходит сюда. Здесь находятся только те, кому действительно интересно наше творчество. Каждый из вас ценен!
+            </p>
+        </div>
+    </div>
+
+</main>
+
+<footer class="site-footer">
+    <div class="footer-content">
+        <div class="footer-brand">
+            <h3>SkyTechDev</h3>
+            <p>Симуляторы нового поколения</p>
+        </div>
+
+        <div class="footer-nav">
+            <h4>Поддержка и связь</h4>
+            <a href="mailto:skyrail.support@gmail.com">Техподдержка</a>
+            <a href="https://t.me/skytechdev" target="_blank">Telegram канал</a>
+        </div>
+
+        <div class="footer-nav">
+            <h4>Правовая информация</h4>
+            <a href="https://skywalkerone.github.io/PrivacyPolicySkyRail/" target="_blank">Политика конфиденциальности</a>
+            <a href="https://skywalkerone.github.io/PrivacyPolicySkyRail/" target="_blank">Удаление аккаунта</a>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        &copy; 2026 SkyTechDev. Все права защищены.
+    </div>
+</footer>
 
 </body>
 </html>
