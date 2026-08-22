@@ -21,16 +21,12 @@ body {
     min-height: 450px;
     display: flex;
     flex-direction: column;
-
-    /* ИСПРАВЛЕНО: Меняем центрирование, чтобы поднять текст */
-    justify-content: flex-start; /* Прижимаем контент к верхнему краю */
-    padding-top: 12vh; /* Отступ сверху. Если нужно еще выше - сделай 8vh или 10vh */
-    box-sizing: border-box; /* Гарантирует, что отступ не сломает общую высоту 70vh */
-
+    justify-content: flex-start;
+    padding-top: 12vh;
+    box-sizing: border-box;
     align-items: center;
     text-align: center;
-
-    /* Градиент и картинка остаются нетронутыми, как ты и просил */
+    
     background:
             linear-gradient(to bottom, rgba(9, 16, 35, 0) 60%, #091023 100%),
             url('../images/top_image.png') no-repeat center top;
@@ -70,7 +66,6 @@ body {
     margin-bottom: 30px;
 }
 
-/* БЛОК С 3D МОДЕЛЬЮ */
 .model-inline-wrapper {
     width: 100%;
     margin: 40px auto;
@@ -85,7 +80,6 @@ body {
     z-index: 1;
 }
 
-/* Белое размытое свечение */
 .viewer-container::after {
     content: '';
     position: absolute;
@@ -312,9 +306,6 @@ model-viewer {
     padding-top: 40px;
 }
 
-/* =========================================
-   ИГРА В МАГАЗИНЕ (Скриншоты)
-   ========================================= */
 .store-section {
     background: rgba(255, 255, 255, 0.02);
     border: 1px solid rgba(255, 255, 255, 0.05);
@@ -346,7 +337,6 @@ model-viewer {
 }
 
 .screenshots-gallery {
-    /* твои старые свойства... */
     display: flex;
     gap: 15px;
     overflow-x: auto;
@@ -354,8 +344,7 @@ model-viewer {
     -ms-overflow-style: none;
     scrollbar-width: none;
     cursor: grab;
-
-    /* ДОБАВИТЬ ЭТО: Полностью отключаем выделение контента при свайпе */
+    
     user-select: none;
     -webkit-user-select: none;
 }
@@ -375,11 +364,9 @@ model-viewer {
     object-fit: cover;
     flex-shrink: 0;
     box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-
-    /* Блокируем реакцию самой картинки на мышь */
     -webkit-user-drag: none;
     user-select: none;
-    pointer-events: none; /* Это гарантирует, что мышь кликает по контейнеру, а не по картинке */
+    pointer-events: none;
 }
 
 .screenshots-gallery::-webkit-scrollbar {
@@ -426,8 +413,7 @@ model-viewer {
         width: 100%;
         text-align: center;
     }
-
-    /* На телефонах скриншоты чуть меньше */
+    
     .screenshots-gallery img {
         height: 180px;
     }
